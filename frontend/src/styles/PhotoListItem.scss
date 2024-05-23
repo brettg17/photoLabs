@@ -1,4 +1,4 @@
-.photo-list__item {
+.photo-list-item {
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
@@ -8,11 +8,12 @@
   max-width: fit-content;
 }
 
-.photo-list__image {
+.photo-image {
   user-select: none;
   width: 300px;
   height: 200px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .photo-list__image {
@@ -23,7 +24,7 @@
   object-fit: cover;
 }
 
-.photo-list__user-profile {
+.profile-image {
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
