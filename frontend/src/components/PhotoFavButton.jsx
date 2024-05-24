@@ -7,9 +7,10 @@ function PhotoFavButton() {
   const [displayAlert, setDisplayAlert] = useState(true);
 
   const toggleSelected = () => {
-    setSelected(!selected);
+    setSelected(prevSelected => !prevSelected);
     setDisplayAlert(false); 
   };
+  
 
   return (
     <div className="photo-list__fav-icon" onClick={toggleSelected}>
