@@ -4,13 +4,14 @@ import PhotoList from '../components/PhotoList';
 import photos from '../mocks/photos'
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = ({ photos, topics }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar />
+      <TopNavigationBar topics={topics}/>
       <PhotoList photos={photos}/>
     </div>
   );
 };
+
 
 export default HomeRoute;
