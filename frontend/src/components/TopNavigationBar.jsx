@@ -1,10 +1,11 @@
 import React from 'react';
 import FavIcon from './FavIcon'; 
+import FavBadge from './FavBadge';
 import TopicList from './TopicList'; 
 import '../styles/TopNavigationBar.scss';
 
 const TopNavigationBar = ({ favorites, topics }) => {
-  const hasFavorites = favorites.length > 0;
+  const isFavPhotoExist = favorites.length > 0;
 
   return (
     <div className="top-nav-bar">
@@ -12,9 +13,10 @@ const TopNavigationBar = ({ favorites, topics }) => {
       <div className="top-nav-bar__topics">
         <TopicList topics={topics} />
       </div>
-      <FavIcon selected={hasFavorites} displayAlert={hasFavorites} />
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
 };
+
 
 export default TopNavigationBar;

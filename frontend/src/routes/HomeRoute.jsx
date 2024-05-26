@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
-import photos from '../mocks/photos'; 
-import topics from '../mocks/topics'; 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = ({ photos, topics, openModal }) => {
   const [favorites, setFavorites] = useState([]);
 
   const toggleFavorite = (photo) => {
@@ -21,7 +19,7 @@ const HomeRoute = () => {
   return (
     <div className="home-route">
       <TopNavigationBar favorites={favorites} topics={topics} />
-      <PhotoList photos={photos} favorites={favorites} toggleFavorite={toggleFavorite} />
+      <PhotoList photos={photos} favorites={favorites} toggleFavorite={toggleFavorite} openModal={openModal} />
     </div>
   );
 };
