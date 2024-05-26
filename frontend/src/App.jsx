@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={mockPhotoData} topics={mockTopicData} openModal={openModal} />
-      {isModalOpen && <PhotoDetailsModal closeModal={setIsModalOpen}/>}
+      {isModalOpen && <PhotoDetailsModal closeModal={setIsModalOpen} photo={selectedPhoto}/>}
     </div>
   );
 };
