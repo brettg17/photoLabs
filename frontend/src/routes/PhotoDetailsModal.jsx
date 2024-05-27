@@ -1,19 +1,37 @@
 import React from 'react';
-import PhotoList from 'components/PhotoList';
-import '../styles/PhotoDetailsModal.scss'
+import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
+import PhotoList from 'components/PhotoList';
+
 
 const PhotoDetailsModal = ({ closeModal, photo }) => {
-  if (photo) {
-    console.log(photo);
-  }
+  if (!photo) return null;
+
+  const { user, urls, location } = photo;
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => closeModal(false)}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
+      <div className="photo-details-modal__content">
+        <img 
+          className="photo-details-modal__image"
+          src={urls.regular} 
+          alt={`Photo by ${user.username}`} 
+        />
+        <div className="photo-details-modal__user-details">
+          <img src={user.profile} alt={`${user.username}'s profile`} className="photo-details-modal__user-profile" />
+          <div className="photo-details-modal__user-info">
+            <p className="photo-details-modal__username">{user.username}</p>
+            {location && (
+              <p className="photo-details-modal__user-location">{location.city}, {location.country}</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;
