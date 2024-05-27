@@ -19,10 +19,23 @@ const App = () => {
     setIsModalOpen(false);
   };
 
+  const similarPhotos = selectedPhoto
+    ? mockPhotoData.filter(p => p.topic === selectedPhoto.topic && p.id !== selectedPhoto.id)
+    : [];
+
+  console.log("Selected Photo:", selectedPhoto);
+  console.log("Similar Photos:", similarPhotos);
+
   return (
     <div className="App">
       <HomeRoute photos={mockPhotoData} topics={mockTopicData} openModal={openModal} />
-      {isModalOpen && <PhotoDetailsModal closeModal={setIsModalOpen} photo={selectedPhoto}/>}
+      {isModalOpen && (
+        <PhotoDetailsModal
+          closeModal={closeModal}
+          photo={selectedPhoto}
+          similarPhotos={similarPhotos}
+        />
+      )}
     </div>
   );
 };
