@@ -16,6 +16,13 @@ const PhotoDetailsModal = ({ closeModal, photo, similarPhotos, favorites, toggle
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__content">
+      <div className="photo-details-modal__fav-button">
+            <PhotoFavButton
+              photo={photo}
+              isFavorite={isFavorite}
+              toggleFavorite={toggleFavorite}
+            />
+          </div>
         <img
           className="photo-details-modal__image"
           src={urls.regular}
@@ -28,13 +35,6 @@ const PhotoDetailsModal = ({ closeModal, photo, similarPhotos, favorites, toggle
             {location && (
               <p className="photo-details-modal__user-location">{location.city}, {location.country}</p>
             )}
-          </div>
-          <div className="photo-details-modal__fav-button">
-            <PhotoFavButton
-              photo={photo}
-              isFavorite={isFavorite}
-              toggleFavorite={toggleFavorite}
-            />
           </div>
         </div>
         <div className="photo-details-modal__similar-photos">

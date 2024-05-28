@@ -7,6 +7,7 @@ const PhotoListItem = ({ photo, isFavorite, toggleFavorite, openModal }) => {
 
   return (
     <li className="photo-list__item" key={id}>
+      <PhotoFavButton photo={photo} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />
       <img 
         src={urls.regular} 
         alt={`Photo by ${user.username}`} 
@@ -18,7 +19,6 @@ const PhotoListItem = ({ photo, isFavorite, toggleFavorite, openModal }) => {
         <div className="photo-list__user-info">
           <p className="photo-list__username">{user.username}</p>
           <p className="photo-list__user-location">{location.city}, {location.country}</p>
-          <PhotoFavButton photo={photo} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />
         </div>
       </div>
     </li>
