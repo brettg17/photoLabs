@@ -2,11 +2,13 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ closeModal, photo, similarPhotos }) => {
+const PhotoDetailsModal = ({ closeModal, photo, similarPhotos, favorites, toggleFavorite }) => {
   if (!photo) return null;
 
-  const { user, urls, location } = photo;
+  const { user, urls, location, id } = photo;
+  const isFavorite = favorites.some(fav => fav.id === id);
 
   return (
     <div className="photo-details-modal">
@@ -27,10 +29,21 @@ const PhotoDetailsModal = ({ closeModal, photo, similarPhotos }) => {
               <p className="photo-details-modal__user-location">{location.city}, {location.country}</p>
             )}
           </div>
+          <div className="photo-details-modal__fav-button">
+            <PhotoFavButton
+              photo={photo}
+              isFavorite={isFavorite}
+              toggleFavorite={toggleFavorite}
+            />
+          </div>
         </div>
         <div className="photo-details-modal__similar-photos">
           <h2>Similar Photos</h2>
-          <PhotoList photos={similarPhotos} favorites={[]} /> 
+          <PhotoList
+            photos={similarPhotos}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
         </div>
       </div>
     </div>
