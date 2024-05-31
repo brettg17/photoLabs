@@ -66,6 +66,21 @@ export default function useApplicationData() {
       .catch((error) => console.error("Fetching topics failed:", error));
   }, []);
 
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Photos by topic data", data);
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+      })
+      .catch(error => console.error("Fetching photos by topic failed:", error));
+  };
+
   const openModal = (photo) => {
     dispatch({ type: ACTIONS.OPEN_MODAL, payload: photo });
   };
@@ -91,6 +106,7 @@ export default function useApplicationData() {
     openModal,
     closeModal,
     toggleFavorite,
-    similarPhotos
+    similarPhotos,
+    fetchPhotosByTopic
   };
 }

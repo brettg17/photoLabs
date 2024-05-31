@@ -5,7 +5,8 @@ import useApplicationData from './hooks/useApplicationData';
 import './App.scss';
 
 const App = () => {
-  const {isModalOpen,
+  const {
+    isModalOpen,
     selectedPhoto,
     favorites,
     photoData,
@@ -14,8 +15,8 @@ const App = () => {
     closeModal,
     toggleFavorite,
     similarPhotos,
+    fetchPhotosByTopic
   } = useApplicationData();
-
 
   return (
     <div className="App">
@@ -25,6 +26,7 @@ const App = () => {
         openModal={openModal} 
         favorites={favorites} 
         toggleFavorite={toggleFavorite}
+        fetchPhotosByTopic={fetchPhotosByTopic} // Pass the function
       />
       {isModalOpen && (
         <PhotoDetailsModal
