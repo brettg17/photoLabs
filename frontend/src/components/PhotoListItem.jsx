@@ -19,7 +19,7 @@ const PhotoListItem = ({ photo, isFavorite, toggleFavorite, openModal }) => {
       <div className="photo-list__user-details">
         <img src={user.profile} alt={`${user.username}'s profile`} className="photo-list__user-profile" />
         <div className="photo-list__user-info">
-          <p className="photo-list__username">{user.username}</p>
+          <p className="photo-list__profile">{user.username}</p>
           <p className="photo-list__user-location">{location.city}, {location.country}</p>
         </div>
       </div>

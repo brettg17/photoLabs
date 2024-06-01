@@ -3,6 +3,14 @@ This project, photolabs, was done as a learning opportunity while attending Ligh
 
 # Photolabs
 
+## Final Product
+!["Home page of photolabs"](https://github.com/brettg17/photoLabs/blob/main/docs/photolabsHome.png?raw=true)
+
+!["User clicking favICon will show notification in navbar"](https://github.com/brettg17/photoLabs/blob/main/docs/photolabsFavs.png?raw=true)
+
+!["clicking on topics in navbar will take you to similar photos"](https://github.com/brettg17/photoLabs/blob/main/docs/photolabsTopics.png?raw=true)
+
+
 ## Features
 - displays a collection of photos with user information that is retrieved from backend server
 - users can navigate through different photo topics using the navbar
