@@ -16,6 +16,7 @@ const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 };
 
+//reducer function to hadnle state
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.OPEN_MODAL:
@@ -39,7 +40,8 @@ const reducer = (state, action) => {
   }
 };
 
-export default function useApplicationData() {
+// custom hook to manage application data and side effects
+export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -48,8 +50,7 @@ export default function useApplicationData() {
         if (!response.ok) throw new Error('Network response was not ok');
         return response.json();
       })
-      .then((data) => {
-        console.log("Photo data", data); 
+      .then((data) => { 
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
       })
       .catch((error) => console.error("Fetching photos failed:", error));
@@ -60,12 +61,12 @@ export default function useApplicationData() {
         return response.json();
       })
       .then((data) => {
-        console.log("Topic data", data); 
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
       })
       .catch((error) => console.error("Fetching topics failed:", error));
   }, []);
 
+  //fetch photos from a specific topic
   const fetchPhotosByTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then(response => {
@@ -75,24 +76,24 @@ export default function useApplicationData() {
         return response.json();
       })
       .then(data => {
-        console.log("Photos by topic data", data);
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
       })
       .catch(error => console.error("Fetching photos by topic failed:", error));
   };
 
+  //open photo details in modal
   const openModal = (photo) => {
     dispatch({ type: ACTIONS.OPEN_MODAL, payload: photo });
   };
-
+ //close modal
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
-
+  //toggle favourite status of photo
   const toggleFavorite = (photo) => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photo });
   };
-
+  //filter photo based on topic
   const similarPhotos = state.selectedPhoto
     ? state.photoData.filter(p => p.topic === state.selectedPhoto.topic && p.id !== state.selectedPhoto.id)
     : [];

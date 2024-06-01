@@ -2,6 +2,8 @@ import React from "react";
 import PhotoListItem from './PhotoListItem';
 import "../styles/PhotoList.scss";
 
+
+//uses the PhotoListItem component to help render a list of photos
 const PhotoList = ({ photos, favorites, toggleFavorite, openModal }) => {
   return (
     <ul className="photo-list">

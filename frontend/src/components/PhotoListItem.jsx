@@ -2,6 +2,8 @@ import React from 'react';
 import PhotoFavButton from './PhotoFavButton'; 
 import '../styles/PhotoListItem.scss';
 
+
+// renders photo items with user details and favourite button.
 const PhotoListItem = ({ photo, isFavorite, toggleFavorite, openModal }) => {
   const { id, user, urls, location } = photo;
 

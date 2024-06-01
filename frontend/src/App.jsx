@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
-import useApplicationData from './hooks/useApplicationData';
+import { useApplicationData } from './hooks/useApplicationData';
 import './App.scss';
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
         openModal={openModal} 
         favorites={favorites} 
         toggleFavorite={toggleFavorite}
-        fetchPhotosByTopic={fetchPhotosByTopic} // Pass the function
+        fetchPhotosByTopic={fetchPhotosByTopic} 
       />
       {isModalOpen && (
         <PhotoDetailsModal
