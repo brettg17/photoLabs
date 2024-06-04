@@ -95,6 +95,7 @@ export const useApplicationData = () => {
   };
   //filter photo based on topic
   const similarPhotos = state.selectedPhoto ? state.selectedPhoto.similar_photos : [];
+
   return {
     isModalOpen: state.isModalOpen,
     selectedPhoto: state.selectedPhoto,
