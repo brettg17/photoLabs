@@ -94,10 +94,7 @@ export const useApplicationData = () => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photo });
   };
   //filter photo based on topic
-  const similarPhotos = state.selectedPhoto
-    ? state.photoData.filter(p => p.topic === state.selectedPhoto.topic && p.id !== state.selectedPhoto.id)
-    : [];
-
+  const similarPhotos = state.selectedPhoto ? state.selectedPhoto.similar_photos : [];
   return {
     isModalOpen: state.isModalOpen,
     selectedPhoto: state.selectedPhoto,
